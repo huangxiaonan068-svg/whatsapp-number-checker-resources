@@ -1,0 +1,211 @@
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f8f7;
+  --line: #e4e8e6;
+  --text: #1f2421;
+  --text-dim: #6b7772;
+  --green: #25d366;
+  --green-dark: #128c7e;
+  --ok-bg: #e8f8ee;
+  --ok-fg: #1a7f45;
+  --warn-bg: #fff6e5;
+  --warn-fg: #a1650b;
+  --bad-bg: #fdecec;
+  --bad-fg: #c0392b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 440px;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.6 "Microsoft YaHei", "PingFang SC", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- 头部 ---------- */
+.head {
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #f2fbf5 0%, #ffffff 100%);
+}
+.head h1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+.head h1::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  vertical-align: 1px;
+}
+.sub {
+  margin: 2px 0 0 15px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+main { padding: 12px 16px 14px; }
+
+/* ---------- 输入区 ---------- */
+.lbl {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.lbl span {
+  font-weight: 400;
+  color: var(--text-dim);
+}
+textarea {
+  width: 100%;
+  height: 96px;
+  padding: 8px 10px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-soft);
+  color: var(--text);
+  font: 12px/1.6 Consolas, "Courier New", monospace;
+  outline: none;
+}
+textarea:focus {
+  border-color: var(--green);
+  background: #fff;
+}
+
+/* ---------- 按钮 ---------- */
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+.btn {
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+  transition: .15s;
+}
+.btn:hover { border-color: #c9d2ce; background: #fafbfa; }
+.btn.primary {
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+  color: #fff;
+  font-weight: 600;
+}
+.btn.primary:hover { background: #0f7a6e; }
+.btn.ghost { color: var(--text-dim); }
+
+/* ---------- 统计 ---------- */
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.chip {
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--bg-soft);
+  color: var(--text-dim);
+  font-size: 11px;
+}
+.chip.ok  { background: var(--ok-bg);   color: var(--ok-fg); }
+.chip.warn{ background: var(--warn-bg); color: var(--warn-fg); }
+.chip.bad { background: var(--bad-bg);  color: var(--bad-fg); }
+
+/* ---------- 结果列表 ---------- */
+.results {
+  max-height: 250px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.results:empty { display: none; }
+
+.item {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+}
+.item:last-child { border-bottom: 0; }
+.item.valid  { border-left-color: var(--green); }
+.item.warn   { border-left-color: #e8a33d; }
+.item.invalid{ border-left-color: #e05c4d; }
+
+.item-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.idx {
+  min-width: 22px;
+  color: #aab4b0;
+  font-family: Consolas, monospace;
+  font-size: 11px;
+}
+.e164 {
+  flex: 1;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  word-break: break-all;
+}
+.e164.muted { color: #9aa4a0; font-weight: 400; }
+.badge {
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.badge.ok  { background: var(--ok-bg);   color: var(--ok-fg); }
+.badge.warn{ background: var(--warn-bg); color: var(--warn-fg); }
+.badge.bad { background: var(--bad-bg);  color: var(--bad-fg); }
+
+.item-sub {
+  margin-top: 3px;
+  padding-left: 30px;
+  color: var(--text-dim);
+  font-size: 11px;
+  word-break: break-all;
+}
+.item-sub .country { color: var(--text); }
+
+/* ---------- 底部说明 ---------- */
+.tip {
+  margin: 10px 0 0;
+  color: var(--text-dim);
+  font-size: 11px;
+  line-height: 1.7;
+}
+.tip b { color: var(--text); }
+
+/* ---------- 轻提示 ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: rgba(31, 36, 33, .9);
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+}

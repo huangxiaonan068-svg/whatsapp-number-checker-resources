@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>WhatsApp 号码格式校验</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="head">
+    <h1>WhatsApp 号码格式校验</h1>
+    <p class="sub">纯本地校验 · 不联网 · 不上传任何数据</p>
+  </header>
+
+  <main>
+    <label class="lbl" for="input">
+      号码列表 <span>每行一个，支持 +86 138… / 0086-138… / (415) 555-2671</span>
+    </label>
+    <textarea id="input" spellcheck="false" placeholder="+8613800138000
+8613800138001
++1 415-555-2671
++44 20 7946 0958"></textarea>
+
+    <div class="bar">
+      <button id="btn-check" class="btn primary" type="button">开始校验</button>
+      <button id="btn-sample" class="btn" type="button">填入示例</button>
+      <button id="btn-copy" class="btn" type="button">复制结果</button>
+      <button id="btn-csv" class="btn" type="button">导出 CSV</button>
+      <button id="btn-clear" class="btn ghost" type="button">清空</button>
+    </div>
+
+    <section id="summary" class="summary" hidden>
+      <span class="chip" id="c-total"></span>
+      <span class="chip ok" id="c-valid"></span>
+      <span class="chip warn" id="c-warn"></span>
+      <span class="chip bad" id="c-invalid"></span>
+      <span class="chip" id="c-unique"></span>
+    </section>
+
+    <ol id="results" class="results"></ol>
+
+    <p class="tip">
+      本工具<b>只做格式校验</b>（国家/地区码、号码长度、常见非法模式），
+      不判断号码是否真的注册了 WhatsApp，也不做任何联网查询。
+    </p>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="countries.js"></script>
+  <script src="validator.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
